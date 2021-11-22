@@ -203,10 +203,10 @@ namespace D2RModding_SpriteEdit
             f.Write(new byte[] { (byte)'S', (byte)'p', (byte)'A', (byte)'1' }, 0, 4);
             f.Write(BitConverter.GetBytes((ushort)31), 0, 2);
             f.Write(BitConverter.GetBytes((ushort)img.Width / fc), 0, 2);
-            f.Write(BitConverter.GetBytes((Int32)img.Width), 0, 4);
-            f.Write(BitConverter.GetBytes((Int32)img.Height), 0, 4);
+            f.Write(BitConverter.GetBytes((int)img.Width), 0, 4);
+            f.Write(BitConverter.GetBytes((int)img.Height), 0, 4);
             f.Seek(0x14, SeekOrigin.Begin);
-            f.Write(BitConverter.GetBytes((UInt32)fc), 0, 4);
+            f.Write(BitConverter.GetBytes((uint)fc), 0, 4);
             int x, y;
             Bitmap bmp = new Bitmap(img);
             f.Seek(0x28, SeekOrigin.Begin);
@@ -629,7 +629,7 @@ namespace D2RModding_SpriteEdit
             string fDir = Path.GetDirectoryName(filename);
             string fName = Path.GetFileNameWithoutExtension(filename);
             string fExt = Path.GetExtension(filename);
-            return Path.Combine(fDir, String.Concat(fName, suffix, fExt));
+            return Path.Combine(fDir, string.Concat(fName, suffix, fExt));
         }
 
         /**
@@ -736,7 +736,7 @@ namespace D2RModding_SpriteEdit
                     SaveAsSprite(img, 1, newPath);
                     string lowend = ".lowend";
                     var filepath = newPath;
-                    var filepathsplit = String.Format("{0}{1}{2}",
+                    var filepathsplit = string.Format("{0}{1}{2}",
                     Path.GetFileNameWithoutExtension(filepath), lowend, Path.GetExtension(filepath));
                     var filepathlow = Path.Combine(Path.GetDirectoryName(filepath), filepathsplit);
                     SaveAsSprite(img, 1, newPath);
@@ -818,12 +818,12 @@ namespace D2RModding_SpriteEdit
 
         private void OnFrameComboBoxChanged(object sender, EventArgs e)
         {
-            CurrentlyViewedFrame = UInt32.Parse(frameSelectionComboBox.Text);
+            CurrentlyViewedFrame = uint.Parse(frameSelectionComboBox.Text);
         }
 
         private void OnFrameCountChanged(object sneder, EventArgs e)
         {
-            CurrentFrameCount = UInt32.Parse(numFramesTextBox.Text);
+            CurrentFrameCount = uint.Parse(numFramesTextBox.Text);
         }
     }
 }
